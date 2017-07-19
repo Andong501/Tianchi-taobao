@@ -1,4 +1,4 @@
-# 天池数据挖掘比赛-淘宝用户购物推荐预测
+天池数据挖掘比赛-淘宝用户购物推荐预测
 ===============
 Tianchi data mining competion-Taobao parchase prediction
 ---------------
