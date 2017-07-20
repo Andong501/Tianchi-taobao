@@ -2235,8 +2235,7 @@ df_y2 = df_y2.set_index(['user_id', 'item_id', 'item_category', 'time']);
 #join y1, y2
 df_Xy = df_X.join(df_y1, on=['user_id', 'item_id', 'item_category', 'time'], how='left').fillna(0);
 df_Xy = df_Xy.join(df_y2, on=['user_id', 'item_id', 'item_category', 'time'], how='left').fillna(0);
-df_Xy = df_Xy.set_index(['user_id', 'item_id', 'item_category', 'time']);
 
 ##save Xy
-df_Xy.to_csv('df_Xy.csv', index=True);
+df_Xy.to_csv('df_Xy.csv', index=False);
 
