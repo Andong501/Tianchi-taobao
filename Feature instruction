@@ -1,0 +1,385 @@
+##Tianchi competition-Taobao purchase prediction Feature instruction##
+
+##basic##
+
+df1:
+size: 20 million X 6-1
+
+df2:
+size: 400,000 X 3-1
+
+df_clean:
+size: 2 million X 5
+
+##user##
+index: user_id
+
+df_X_u1: size: 8,000 X 1, how: left, fillna: 0, ft: ur_buy, desc: 该用户的购买量;
+df_X_u2: size: 20,000 X 1, how: left, fillna: 0, ft: ur_click, desc: 该用户的点击量;
+df_X_u3: size: 6,000 X 1, how: left, fillna: 0, ft: ur_collec, desc: 该用户的收藏量;
+df_X_u4: size: 9,000 X 1, how: left, fillna: 0, ft: ur_cart, desc: 该用户的加入购物车量;
+df_X_u5: size: 20,000 X 1, how: left, fillna: 0, ur_bh_cvr, desc: 该用户的购买/行为转化率;
+df_X_u6: size: 20,000 X 1, how: left, fillna: 0, ur_ck_cvr, desc: 该用户的购买/点击转化率;
+df_X_u7: size: 10,000 X 1, how: left, fillna: 0, ur_cl_cvr, desc: 该用户的购买/收藏转化率;
+df_X_u8: size: 10,000 X 1, how: left, fillna: 0, ur_ct_cvr, desc: 该用户的购买/购物车转化率;
+df_X_u9: size: 8,000 X 1, how: left, fillna: 0, ur_buy_dp, desc: 该用户的重复购买率;
+df_X_u10: size: 8,000 X 1, how: left, fillna: 0, ur_co_buy_pre, desc: 该用户的隔天购买率;
+
+##item(category)##
+index: item_category
+
+df_X_c1: size: 500 X 1, how: left, fillna: 0, ft: cg_buy, desc: 该商品所属分类的被购买量;
+df_X_c2: size: 1,000 X 1, how: left, fillna: 0, ft: cg_click, desc: 该商品所属分类的被点击量;
+df_X_c3: size: 600 X 1, how: left, fillna: 0, ft: cg_collec, desc: 该商品所属分类的被收藏量;
+df_X_c4: size: 600 X 1, how: left, fillna: 0, ft: cg_cart, desc: 该商品所属分类的被加入购物车量;
+df_X_c5: size: 1,000 X 1, how: left, fillna: 0, ft: cg_bh_cvr, desc: 该商品所属分类的被购买/行为转化率;
+df_X_c6: size: 1,000 X 1, how: left, fillna: 0, ft: cg_ck_cvr, desc: 该商品所属分类的被购买/点击转化率;
+df_X_c7: size: 600 X 1, how: left, fillna: 0, ft: cg_cl_cvr, desc: 该商品所属分类的被购买/收藏转化率;
+df_X_c8: size: 600 X 1, how: left, fillna: 0, ft: cg_ct_cvr, desc: 该商品所属分类的被购买/购物车转化率;
+df_X_c9: size: 500 X 1, how: left, fillna: 0, ft: cg_buy_pr, desc: 该商品所属分类在所有分类中的被购买占比;
+df_X_c10: size: 1,000 X 1, how: left, fillna: 0, ft: cg_ck_pr, desc: 该商品所属分类在所有分类中的被点击占比;
+df_X_c11: size: 600 X 1, how: left, fillna: 0, ft: cg_cl_pr, desc: 该商品所属分类在所有分类中的被收藏占比;
+df_X_c12: size: 600 X 1, how: left, fillna: 0, ft: cg_ct_pr, desc: 该商品所属分类在所有分类中的被加入购物车占比;
+df_X_c13: size: 500 X 1, how: left, fillna: 0, ft: cg_buy_dp, desc: 该商品所属分类被重复购买率;
+df_X_c14: size: 500 X 1, how: left, fillna: 0, ft: ct_co_buy_pre, desc: 该商品所属分类的被隔天购买率;
+
+index: item_id
+
+df_X_i1: size: 20,000 X 1, how: left, fillna: 0, ft: it_buy, desc: 该商品的被购买量;
+df_X_i2: size: 400,000 X 1, how: left, fillna: 0, ft: it_click, desc: 该商品的被点击量;
+df_X_i3: size: 30,000 X 1, how: left, fillna: 0, ft: it_collec, desc: 该商品的被收藏量;
+df_X_i4: size: 40,000 X 1, how: left, fillna: 0, ft: it_cart, desc: 该商品的被加入购物车量;
+df_X_i5: size: 400,000 X 1, how: left, fillna: 0, ft: it_bh_cvr, desc: 该商品的被购买/行为转化率;
+df_X_i6: size: 400,000 X 1, how: left, fillna: 0, ft: it_ck_cvr, desc: 该商品的被购买/点击转化率;
+df_X_i7: size: 40,000 X 1, how: left, fillna: 0, ft: it_cl_cvr, desc: 该商品的被购买/收藏转化率;
+df_X_i8: size: 40,000 X 1, how: left, fillna: 0, ft: it_ct_cvr, desc: 该商品的被购买/购物车转化率;
+df_X_i9: size: 20,000 X 1, how: left, fillna: 0, ft: it_buy_pr, desc: 该商品在所属分类中的被购买占比;
+df_X_i10: size: 400,000 X 1, how: left, fillna: 0, ft: it_ck_pr, desc: 该商品在所属分类中的被点击占比;
+df_X_i11: size: 30,000 X 1, how: left, fillna: 0, ft: it_cl_pr, desc: 该商品在所属分类中的被收藏占比;
+df_X_i12: size: 40,000 X 1, how: left, fillna: 0, ft: it_ct_pr, desc: 该商品在所属分类中的被购物车占比;
+df_X_i13: size: 20,000 X 1, how: left, fillna: 0, ft: it_buy_dp, desc: 该商品被重复购买率;
+df_X_i14: size: 20,000 X 1, how: left, fillna: 0, ft: it_co_buy_pre, desc: 该商品的被隔天购买率;
+
+##time##
+index: time
+
+df_X_t1: size: 31 X 11, how: left, fillna: impossible, ft: isfestival/isfestival_nd/isfestival_n2d/isweekend/weekday_[0:6], desc: 该日期是否是促销节/该日期是否是周末/该日期是星期几;
+
+##user X item(category)##
+index: user_id, item_category
+
+df_X_uc1: size: 20,000 X 1, how: left, fillna: 0, ft: uc_buy, desc: 该用户对该商品所属分类的购买量;
+df_X_uc2: size: 200,000 X 1, how: left, fillna: 0, ft: uc_click, desc: 该用户对该商品所属分类的点击量;
+df_X_uc3: size: 20,000 X 1, how: left, fillna: 0, ft: uc_collec, desc: 该用户对该商品所属分类的收藏量;
+df_X_uc4: size: 30,000 X 1, how: left, fillna: 0, ft: uc_cart, desc: 该用户对该商品所属分类的加入购物车量;
+df_X_uc5: size: 200,000 X 1, how: left, fillna: 0, ft: uc_bh_cvr, desc: 该用户对该商品所属分类的购买/行为转化率;
+df_X_uc6: size: 200,000 X 1, how: left, fillna: 0, ft: uc_ck_cvr, desc: 该用户对该商品所属分类的被购买/点击转化率;
+df_X_uc7: size: 30,000 X 1, how: left, fillna: 0, ft: uc_cl_cvr, desc: 该用户对该商品所属分类的购买/收藏转化率;
+df_X_uc8: size: 30,000 X 1, how: left, fillna: 0, ft: uc_ct_cvr, desc: 该用户对该商品所属分类的购买/购物车转化率;
+df_X_uc9: size: 20,000 X 1, how: left, fillna: 0, ft: uc_buy_pr, desc: 该用户对该商品所属分类在所有分类中的购买占比;
+df_X_uc10: size: 200,000 X 1, how: left, fillna: 0, ft: uc_ck_pr, desc: 该用户对该商品所属分类在所有分类中的点击占比;
+df_X_uc11: size: 20,000 X 1, how: left, fillna: 0, ft: uc_cl_pr, desc: 该用户对该商品所属分类在所有分类中的收藏占比;
+df_X_uc12: size: 30,000 X 1, how: left, fillna: 0, ft: uc_ct_pr, desc: 该用户对该商品所属分类在所有分类中的加入购物车占比;
+df_X_uc13: size: 20,000 X 1, how: left, fillna: 0, ft: uc_co_buy_pre, desc: 该用户对该商品所属分类的隔天购买率;
+
+index: user_id, item_id
+
+df_X_ui1: size: 20,000 X 1, how: left, fillna: 0, ft: ui_buy, desc: 该用户对该商品的购买量;
+df_X_ui2: size: 800,000 X 1, how: left, fillna: 0, ft: ui_click, desc: 该用户对该商品的点击量;
+df_X_ui3: size: 30,000 X 1, how: left, fillna: 0, ft: ui_collec, desc: 该用户对该商品的收藏量;
+df_X_ui4: size: 50,000 X 1, how: left, fillna: 0, ft: ui_cart, desc: 该用户对该商品的加入购物车量;
+df_X_ui5: size: 800,000 X 1, how: left, fillna: 0, ft: ui_bh_cvr, desc: 该用户对该商品的购买/行为转化率;
+df_X_ui6: size: 800,000 X 1, how: left, fillna: 0, ft: ui_ck_cvr, desc: 该用户对该商品的被购买/点击转化率;
+df_X_ui7: size: 50,000 X 1, how: left, fillna: 0, ft: ui_cl_cvr, desc: 该用户对该商品的购买/收藏转化率;
+df_X_ui8: size: 60,000 X 1, how: left, fillna: 0, ft: ui_ct_cvr, desc: 该用户对该商品的购买/购物车转化率;
+df_X_ui9: size: 20,000 X 1, how: left, fillna: 0, ft: ui_buy_pr, desc: 该用户对该商品在所属分类中的购买占比;
+df_X_ui10: size: 800,000 X 1, how: left, fillna: 0, ft: ui_ck_pr, desc: 该用户对该商品在所属分类中的点击占比;
+df_X_ui11: size: 30,000 X 1, how: left, fillna: 0, ft: ui_cl_pr, desc: 该用户对该商品在所属分类中的收藏占比;
+df_X_ui12: size: 50,000 X 1, how: left, fillna: 0, ft: ui_ct_pr, desc: 该用户对该商品在所属分类中的加入购物车占比;
+df_X_ui13: size: 20,000 X 1, how: left, fillna: 0, ft: ui_co_buy_pre, desc: 该用户对该商品的隔天购买率;
+
+##user X time##
+index: user_id, time
+
+#today
+df_X_ut1_today: size: 10,000 X 1, how: left, fillna: 0, ft: ut_buy_today, desc: 该用户今天的购买量;
+df_X_ut2_today: size: 100,000 X 1, how: left, fillna: 0, ft: ut_click_today, desc: 该用户今天的点击量;
+df_X_ut3_today: size: 10,000 X 1, how: left, fillna: 0, ft: ut_collec_today, desc: 该用户今天的收藏量;
+df_X_ut4_today: size: 20,000 X 1, how: left, fillna: 0, ft: ut_cart_today, desc: 该用户今天的购物车量;
+df_X_ut5_today: size: 100,000 X 1, how: left, fillna: 0, ft: ut_bh_cvr_today, desc: 该用户今天的购买/行为转化率;
+df_X_ut6_today: size: 100,000 X 1, how: left, fillna: 0, ft: ut_ck_cvr_today, desc: 该用户今天的购买/点击转化率;
+df_X_ut7_today: size: 30,000 X 1, how: left, fillna: 0, ft: ut_cl_cvr_today, desc: 该用户今天的购买/收藏转化率;
+df_X_ut8_today: size: 30,000 X 1, how: left, fillna: 0, ft: ut_ct_cvr_today, desc: 该用户今天的购买/购物车转化率;
+df_X_ut9_today: size: 10,000 X 1, how: left, fillna: 0, ft: ut_buy_pr_today, desc: 该用户今天在近0-10天中的购买占比;
+df_X_ut10_today: size: 100,000 X 1, how: left, fillna: 0, ft: ut_ck_pr_today, desc: 该用户今天在近0-10天中的点击占比;
+df_X_ut11_today: size: 10,000 X 1, how: left, fillna: 0, ft: ut_cl_pr_today, desc: 该用户今天在近0-10天中的收藏占比;
+df_X_ut12_today: size: 20,000 X 1, how: left, fillna: 0, ft: ut_ct_pr_today, desc: 该用户今天在近0-10天中的购物车占比;
+
+#1 day
+df_X_ut1_1day: size: 10,000 X 1, how: left, fillna: 0, ft: ut_buy_1day, desc: 该用户近1天的购买量;
+df_X_ut2_1day: size: 100,000 X 1, how: left, fillna: 0, ft: ut_click_1day, desc: 该用户近1天的点击量;
+df_X_ut3_1day: size: 10,000 X 1, how: left, fillna: 0, ft: ut_collec_1day, desc: 该用户近1天的收藏量;
+df_X_ut4_1day: size: 20,000 X 1, how: left, fillna: 0, ft: ut_cart_1day, desc: 该用户近1天的购物车量;
+df_X_ut5_1day: size: 100,000 X 1, how: left, fillna: 0, ft: ut_bh_cvr_1day, desc: 该用户近1天的购买/行为转化率;
+df_X_ut6_1day: size: 100,000 X 1, how: left, fillna: 0, ft: ut_ck_cvr_1day, desc: 该用户近1天的购买/点击转化率;
+df_X_ut7_1day: size: 30,000 X 1, how: left, fillna: 0, ft: ut_cl_cvr_1day, desc: 该用户近1天的购买/收藏转化率;
+df_X_ut8_1day: size: 30,000 X 1, how: left, fillna: 0, ft: ut_ct_cvr_1day, desc: 该用户近1天的购买/购物车转化率;
+df_X_ut9_1day: size: 10,000 X 1, how: left, fillna: 0, ft: ut_buy_pr_1day, desc: 该用户近1天在近0-10天中的购买占比;
+df_X_ut10_1day: size: 100,000 X 1, how: left, fillna: 0, ft: ut_ck_pr_1day, desc: 该用户近1天在近0-10天中的点击占比;
+df_X_ut11_1day: size: 10,000 X 1, how: left, fillna: 0, ft: ut_cl_pr_1day, desc: 该用户近1天在近0-10天中的收藏占比;
+df_X_ut12_1day: size: 20,000 X 1, how: left, fillna: 0, ft: ut_ct_pr_1day, desc: 该用户近1天在近0-10天中的购物车占比;
+
+#2 day
+df_X_ut1_2day: size: 10,000 X 1, how: left, fillna: 0, ft: ut_buy_2day, desc: 该用户近2天的购买量;
+df_X_ut2_2day: size: 100,000 X 1, how: left, fillna: 0, ft: ut_click_2day, desc: 该用户近2天的点击量;
+df_X_ut3_2day: size: 10,000 X 1, how: left, fillna: 0, ft: ut_collec_2day, desc: 该用户近2天的收藏量;
+df_X_ut4_2day: size: 20,000 X 1, how: left, fillna: 0, ft: ut_cart_2day, desc: 该用户近2天的购物车量;
+df_X_ut5_2day: size: 100,000 X 1, how: left, fillna: 0, ft: ut_bh_cvr_2day, desc: 该用户近2天的购买/行为转化率;
+df_X_ut6_2day: size: 100,000 X 1, how: left, fillna: 0, ft: ut_ck_cvr_2day, desc: 该用户近2天的购买/点击转化率;
+df_X_ut7_2day: size: 30,000 X 1, how: left, fillna: 0, ft: ut_cl_cvr_2day, desc: 该用户近2天的购买/收藏转化率;
+df_X_ut8_2day: size: 30,000 X 1, how: left, fillna: 0, ft: ut_ct_cvr_2day, desc: 该用户近2天的购买/购物车转化率;
+df_X_ut9_2day: size: 10,000 X 1, how: left, fillna: 0, ft: ut_buy_pr_2day, desc: 该用户近2天在近0-10天中的购买占比;
+df_X_ut10_2day: size: 100,000 X 1, how: left, fillna: 0, ft: ut_ck_pr_2day, desc: 该用户近2天在近0-10天中的点击占比;
+df_X_ut11_2day: size: 10,000 X 1, how: left, fillna: 0, ft: ut_cl_pr_2day, desc: 该用户近2天在近0-10天中的收藏占比;
+df_X_ut12_2day: size: 20,000 X 1, how: left, fillna: 0, ft: ut_ct_pr_2day, desc: 该用户近2天在近0-10天中的购物车占比;
+
+#3-10 day
+df_X_ut1_310day: size: 90,000 X 1, how: left, fillna: 0, ft: ut_buy_310day, desc: 该用户近3-10天的购买量;
+df_X_ut2_310day: size: 400,000 X 1, how: left, fillna: 0, ft: ut_click_310day, desc: 该用户近3-10天的点击量;
+df_X_ut3_310day: size: 70,000 X 1, how: left, fillna: 0, ft: ut_collec_310day, desc: 该用户近3-10天的收藏量;
+df_X_ut4_310day: size: 100,000 X 1, how: left, fillna: 0, ft: ut_cart_310day, desc: 该用户近3-10天的购物车量;
+df_X_ut5_310day: size: 400,000 X 1, how: left, fillna: 0, ft: ut_bh_cvr_310day, desc: 该用户近3-10天的购买/行为转化率;
+df_X_ut6_310day: size: 100,000 X 1, how: left, fillna: 0, ft: ut_ck_cvr_310day, desc: 该用户近3-10天的购买/点击转化率;
+df_X_ut7_310day: size: 100,000 X 1, how: left, fillna: 0, ft: ut_cl_cvr_310day, desc: 该用户近3-10天的购买/收藏转化率;
+df_X_ut8_310day: size: 150,000 X 1, how: left, fillna: 0, ft: ut_ct_cvr_310day, desc: 该用户近3-10天的购买/购物车转化率;
+df_X_ut9_310day: size: 90,000 X 1, how: left, fillna: 0, ft: ut_buy_pr_310day, desc: 该用户近3-10天在整个周期中的购买占比;
+df_X_ut10_310day: size: 400,000 X 1, how: left, fillna: 0, ft: ut_ck_pr_310day, desc: 该用户近3-10天在整个周期中的点击占比;
+df_X_ut11_310day: size: 70,000 X 1, how: left, fillna: 0, ft: ut_cl_pr_310day, desc: 该用户近3-10天在整个周期中的收藏占比;
+df_X_ut12_310day: size: 100,000 X 1, how: left, fillna: 0, ft: ut_ct_pr_310day, desc: 该用户近3-10天在整个周期中的购物车占比;
+
+#0-10 day
+df_X_ut1_010day: size: 100,000 X 1, how: left, fillna: 0, ft: ut_buy_dp_010day, desc: 该用户近0-10天内的重复购买率;
+df_X_ut2_010day: size: 100,000 X 1, how: left, fillna: 0, ft: ut_co_buy_pre_010day, desc: 该用户近0-10天的隔天购买率;
+
+#whole period
+df_X_ut1: size: 40,000 X 1, how: left, fillna: np.timedelta64(0, 'D'), ft: ut_buy_lasttime, desc: 该用户距离测量日最后一次购买的间隔天数;
+df_X_ut2: size: 100,000 X 1, how: left, fillna: np.timedelta64(0, 'D'), ft: ut_bh_lasttime, desc: 该用户距离测量日最后一次产生行为的间隔天数;
+
+##item(category) X time##
+index: item_category, time
+
+#today
+df_X_ct1_today: size: 6,000 X 1, how: left, fillna: 0, ft: ct_buy_today, desc: 该商品所属分类今天的购买量;
+df_X_ct2_today: size: 20,000 X 1, how: left, fillna: 0, ft: ct_click_today, desc: 该商品所属分类今天的点击量;
+df_X_ct3_today: size: 6,000 X 1, how: left, fillna: 0, ft: ct_collec_today, desc: 该商品所属分类今天的收藏量;
+df_X_ct4_today: size: 8,000 X 1, how: left, fillna: 0, ft: ct_cart_today, desc: 该商品所属分类今天的购物车量;
+df_X_ct5_today: size: 20,000 X 1, how: left, fillna: 0, ft: ct_bh_cvr_today, desc: 该商品所属分类今天的购买/行为转化率;
+df_X_ct6_today: size: 20,000 X 1, how: left, fillna: 0, ft: ct_ck_cvr_today, desc: 该商品所属分类今天的购买/点击转化率;
+df_X_ct7_today: size: 8,000 X 1, how: left, fillna: 0, ft: ct_cl_cvr_today, desc: 该商品所属分类今天的购买/收藏转化率;
+df_X_ct8_today: size: 8,000 X 1, how: left, fillna: 0, ft: ct_ct_cvr_today, desc: 该商品所属分类今天的购买/购物车转化率;
+df_X_ct9_today: size: 6,000 X 1, how: left, fillna: 0, ft: ct_buy_pr_today, desc: 该商品所属分类今天在近0-10天中的购买占比;
+df_X_ct10_today: size: 20,000 X 1, how: left, fillna: 0, ft: ct_ck_pr_today, desc: 该商品所属分类今天在近0-10天中的点击占比;
+df_X_ct11_today: size: 6,000 X 1, how: left, fillna: 0, ft: ct_cl_pr_today, desc: 该商品所属分类今天在近0-10天中的收藏占比;
+df_X_ct12_today: size: 8,000 X 1, how: left, fillna: 0, ft: ct_ct_pr_today, desc: 该商品所属分类今天在近0-10天中的购物车占比;
+
+#1 day
+df_X_ct1_1day: size: 6,000 X 1, how: left, fillna: 0, ft: ct_buy_1day, desc: 该商品所属分类近1天的购买量;
+df_X_ct2_1day: size: 20,000 X 1, how: left, fillna: 0, ft: ct_click_1day, desc: 该商品所属分类近1天的点击量;
+df_X_ct3_1day: size: 6,000 X 1, how: left, fillna: 0, ft: ct_collec_1day, desc: 该商品所属分类近1天的收藏量;
+df_X_ct4_1day: size: 8,000 X 1, how: left, fillna: 0, ft: ct_cart_1day, desc: 该商品所属分类近1天的购物车量;
+df_X_ct5_1day: size: 20,000 X 1, how: left, fillna: 0, ft: ct_bh_cvr_1day, desc: 该商品所属分类近1天的购买/行为转化率;
+df_X_ct6_1day: size: 20,000 X 1, how: left, fillna: 0, ft: ct_ck_cvr_1day, desc: 该商品所属分类近1天的购买/点击转化率;
+df_X_ct7_1day: size: 8,000 X 1, how: left, fillna: 0, ft: ct_cl_cvr_1day, desc: 该商品所属分类近1天的购买/收藏转化率;
+df_X_ct8_1day: size: 8,000 X 1, how: left, fillna: 0, ft: ct_ct_cvr_1day, desc: 该商品所属分类近1天的购买/购物车转化率;
+df_X_ct9_1day: size: 6,000 X 1, how: left, fillna: 0, ft: ct_buy_pr_1day, desc: 该商品所属分类近1天在近0-10天中的购买占比;
+df_X_ct10_1day: size: 20,000 X 1, how: left, fillna: 0, ft: ct_ck_pr_1day, desc: 该商品所属分类近1天在近0-10天中的点击占比;
+df_X_ct11_1day: size: 6,000 X 1, how: left, fillna: 0, ft: ct_cl_pr_1day, desc: 该商品所属分类近1天在近0-10天中的收藏占比;
+df_X_ct12_1day: size: 8,000 X 1, how: left, fillna: 0, ft: ct_ct_pr_1day, desc: 该商品所属分类近1天在近0-10天中的购物车占比;
+
+#2 day
+df_X_ct1_2day: size: 6,000 X 1, how: left, fillna: 0, ft: ct_buy_2day, desc: 该商品所属分类近2天的购买量;
+df_X_ct2_2day: size: 20,000 X 1, how: left, fillna: 0, ft: ct_click_2day, desc: 该商品所属分类近2天的点击量;
+df_X_ct3_2day: size: 6,000 X 1, how: left, fillna: 0, ft: ct_collec_2day, desc: 该商品所属分类近2天的收藏量;
+df_X_ct4_2day: size: 8,000 X 1, how: left, fillna: 0, ft: ct_cart_2day, desc: 该商品所属分类近2天的购物车量;
+df_X_ct5_2day: size: 20,000 X 1, how: left, fillna: 0, ft: ct_bh_cvr_2day, desc: 该商品所属分类近2天的购买/行为转化率;
+df_X_ct6_2day: size: 20,000 X 1, how: left, fillna: 0, ft: ct_ck_cvr_2day, desc: 该商品所属分类近2天的购买/点击转化率;
+df_X_ct7_2day: size: 8,000 X 1, how: left, fillna: 0, ft: ct_cl_cvr_2day, desc: 该商品所属分类近2天的购买/收藏转化率;
+df_X_ct8_2day: size: 8,000 X 1, how: left, fillna: 0, ft: ct_ct_cvr_2day, desc: 该商品所属分类近2天的购买/购物车转化率;
+df_X_ct9_2day: size: 6,000 X 1, how: left, fillna: 0, ft: ct_buy_pr_2day, desc: 该商品所属分类近2天在近0-10天中的购买占比;
+df_X_ct10_2day: size: 20,000 X 1, how: left, fillna: 0, ft: ct_ck_pr_2day, desc: 该商品所属分类近2天在近0-10天中的点击占比;
+df_X_ct11_2day: size: 6,000 X 1, how: left, fillna: 0, ft: ct_cl_pr_2day, desc: 该商品所属分类近2天在近0-10天中的收藏占比;
+df_X_ct12_2day: size: 8,000 X 1, how: left, fillna: 0, ft: ct_ct_pr_2day, desc: 该商品所属分类近2天在近0-10天中的购物车占比;
+
+#3-10 day
+df_X_ct1_310day: size: 10,000 X 1, how: left, fillna: 0, ft: ct_buy_310day, desc: 该商品所属分类近3-10天的购买量;
+df_X_ct2_310day: size: 30,000 X 1, how: left, fillna: 0, ft: ct_click_310day, desc: 该商品所属分类近3-10天的点击量;
+df_X_ct3_310day: size: 10,000 X 1, how: left, fillna: 0, ft: ct_collec_310day, desc: 该商品所属分类近3-10天的收藏量;
+df_X_ct4_310day: size: 20,000 X 1, how: left, fillna: 0, ft: ct_cart_310day, desc: 该商品所属分类近3-10天的购物车量;
+df_X_ct5_310day: size: 30,000 X 1, how: left, fillna: 0, ft: ct_bh_cvr_310day, desc: 该商品所属分类近3-10天的购买/行为转化率;
+df_X_ct6_310day: size: 30,000 X 1, how: left, fillna: 0, ft: ct_ck_cvr_310day, desc: 该商品所属分类近3-10天的购买/点击转化率;
+df_X_ct7_310day: size: 20,000 X 1, how: left, fillna: 0, ft: ct_cl_cvr_310day, desc: 该商品所属分类近3-10天的购买/收藏转化率;
+df_X_ct8_310day: size: 20,000 X 1, how: left, fillna: 0, ft: ct_ct_cvr_310day, desc: 该商品所属分类近3-10天的购买/购物车转化率;
+df_X_ct9_310day: size: 10,000 X 1, how: left, fillna: 0, ft: ct_buy_pr_310day, desc: 该商品所属分类近3-10天在整个周期中的购买占比;
+df_X_ct10_310day: size: 30,000 X 1, how: left, fillna: 0, ft: ct_ck_pr_310day, desc: 该商品所属分类近3-10天在整个周期中的点击占比;
+df_X_ct11_310day: size: 10,000 X 1, how: left, fillna: 0, ft: ct_cl_pr_310day, desc: 该商品所属分类近3-10天在整个周期中的收藏占比;
+df_X_ct12_310day: size: 20,000 X 1, how: left, fillna: 0, ft: ct_ct_pr_310day, desc: 该商品所属分类近3-10天在整个周期中的购物车占比;
+
+#0-10 day
+df_X_ct1_010day: size: 20,000 X 1, how: left, fillna: 0, ft: ct_buy_dp_010day, desc: 该商品所属分类近0-10天内的重复购买率;
+df_X_ct2_010day: size: 20,000 X 1, how: left, fillna: 0, ft: ct_co_buy_pre_010day, desc: 该商品所属分类近0-10天的隔天购买率;
+
+#whole period
+df_X_ct1: size: 10,000 X 1, how: left, fillna: np.timedelta64(0, 'D'), ft: ct_buy_lasttime, desc: 该商品所属分类距离测量日最后一次购买的间隔天数;
+df_X_ct2: size: 20,000 X 1, how: left, fillna: np.timedelta64(0, 'D'), ft: ct_bh_lasttime, desc: 该商品所属分类距离测量日最后一次产生行为的间隔天数;
+
+index: item_id, time
+
+#today
+df_X_it1_today: size: 20,000 X 1, how: left, fillna: 0, ft: it_buy_today, desc: 该商品今天的购买量;
+df_X_it2_today: size: 800,000 X 1, how: left, fillna: 0, ft: it_click_today, desc: 该商品今天的点击量;
+df_X_it3_today: size: 30,000 X 1, how: left, fillna: 0, ft: it_collec_today, desc: 该商品今天的收藏量;
+df_X_it4_today: size: 50,000 X 1, how: left, fillna: 0, ft: it_cart_today, desc: 该商品今天的购物车量;
+df_X_it5_today: size: 800,000 X 1, how: left, fillna: 0, ft: it_bh_cvr_today, desc: 该商品今天的购买/行为转化率;
+df_X_it6_today: size: 800,000 X 1, how: left, fillna: 0, ft: it_ck_cvr_today, desc: 该商品今天的购买/点击转化率;
+df_X_it7_today: size: 50,000 X 1, how: left, fillna: 0, ft: it_cl_cvr_today, desc: 该商品今天的购买/收藏转化率;
+df_X_it8_today: size: 60,000 X 1, how: left, fillna: 0, ft: it_ct_cvr_today, desc: 该商品今天的购买/购物车转化率;
+df_X_it9_today: size: 20,000 X 1, how: left, fillna: 0, ft: it_buy_pr_today, desc: 该商品今天在近0-10天中的购买占比;
+df_X_it10_today: size: 800,000 X 1, how: left, fillna: 0, ft: it_ck_pr_today, desc: 该商品今天在近0-10天中的点击占比;
+df_X_it11_today: size: 30,000 X 1, how: left, fillna: 0, ft: it_cl_pr_today, desc: 该商品今天在近0-10天中的收藏占比;
+df_X_it12_today: size: 50,000 X 1, how: left, fillna: 0, ft: it_ct_pr_today, desc: 该商品今天在近0-10天中的购物车占比;
+
+#1 day
+df_X_it1_1day: size: 20,000 X 1, how: left, fillna: 0, ft: it_buy_1day, desc: 该商品近1天的购买量;
+df_X_it2_1day: size: 800,000 X 1, how: left, fillna: 0, ft: it_click_1day, desc: 该商品近1天的点击量;
+df_X_it3_1day: size: 30,000 X 1, how: left, fillna: 0, ft: it_collec_1day, desc: 该商品近1天的收藏量;
+df_X_it4_1day: size: 50,000 X 1, how: left, fillna: 0, ft: it_cart_1day, desc: 该商品近1天的购物车量;
+df_X_it5_1day: size: 800,000 X 1, how: left, fillna: 0, ft: it_bh_cvr_1day, desc: 该商品近1天的购买/行为转化率;
+df_X_it6_1day: size: 800,000 X 1, how: left, fillna: 0, ft: it_ck_cvr_1day, desc: 该商品近1天的购买/点击转化率;
+df_X_it7_1day: size: 50,000 X 1, how: left, fillna: 0, ft: it_cl_cvr_1day, desc: 该商品近1天的购买/收藏转化率;
+df_X_it8_1day: size: 60,000 X 1, how: left, fillna: 0, ft: it_ct_cvr_1day, desc: 该商品近1天的购买/购物车转化率;
+df_X_it9_1day: size: 20,000 X 1, how: left, fillna: 0, ft: it_buy_pr_1day, desc: 该商品近1天在近0-10天中的购买占比;
+df_X_it10_1day: size: 800,000 X 1, how: left, fillna: 0, ft: it_ck_pr_1day, desc: 该商品近1天在近0-10天中的点击占比;
+df_X_it11_1day: size: 30,000 X 1, how: left, fillna: 0, ft: it_cl_pr_1day, desc: 该商品近1天在近0-10天中的收藏占比;
+df_X_it12_1day: size: 50,000 X 1, how: left, fillna: 0, ft: it_ct_pr_1day, desc: 该商品近1天在近0-10天中的购物车占比;
+
+#2 day
+df_X_it1_2day: size: 20,000 X 1, how: left, fillna: 0, ft: it_buy_2day, desc: 该商品近2天的购买量;
+df_X_it2_2day: size: 800,000 X 1, how: left, fillna: 0, ft: it_click_2day, desc: 该商品近2天的点击量;
+df_X_it3_2day: size: 30,000 X 1, how: left, fillna: 0, ft: it_collec_2day, desc: 该商品近2天的收藏量;
+df_X_it4_2day: size: 50,000 X 1, how: left, fillna: 0, ft: it_cart_2day, desc: 该商品近2天的购物车量;
+df_X_it5_2day: size: 800,000 X 1, how: left, fillna: 0, ft: it_bh_cvr_2day, desc: 该商品近2天的购买/行为转化率;
+df_X_it6_2day: size: 800,000 X 1, how: left, fillna: 0, ft: it_ck_cvr_2day, desc: 该商品近2天的购买/点击转化率;
+df_X_it7_2day: size: 50,000 X 1, how: left, fillna: 0, ft: it_cl_cvr_2day, desc: 该商品近2天的购买/收藏转化率;
+df_X_it8_2day: size: 60,000 X 1, how: left, fillna: 0, ft: it_ct_cvr_2day, desc: 该商品近2天的购买/购物车转化率;
+df_X_it9_2day: size: 20,000 X 1, how: left, fillna: 0, ft: it_buy_pr_2day, desc: 该商品近2天在近0-10天中的购买占比;
+df_X_it10_2day: size: 800,000 X 1, how: left, fillna: 0, ft: it_ck_pr_2day, desc: 该商品近2天在近0-10天中的点击占比;
+df_X_it11_2day: size: 30,000 X 1, how: left, fillna: 0, ft: it_cl_pr_2day, desc: 该商品近2天在近0-10天中的收藏占比;
+df_X_it12_2day: size: 50,000 X 1, how: left, fillna: 0, ft: it_ct_pr_2day, desc: 该商品近2天在近0-10天中的购物车占比;
+
+#3-10 day
+df_X_it1_310day: size: 150,000 X 1, how: left, fillna: 0, ft: it_buy_310day, desc: 该商品近3-10天的购买量;
+df_X_it2_310day: size: 4,000,000 X 1, how: left, fillna: 0, ft: it_click_310day, desc: 该商品近3-10天的点击量;
+df_X_it3_310day: size: 200,000 X 1, how: left, fillna: 0, ft: it_collec_310day, desc: 该商品近3-10天的收藏量;
+df_X_it4_310day: size: 400,000 X 1, how: left, fillna: 0, ft: it_cart_310day, desc: 该商品近3-10天的购物车量;
+df_X_it5_310day: size: 4,000,000 X 1, how: left, fillna: 0, ft: it_bh_cvr_310day, desc: 该商品近3-10天的购买/行为转化率;
+df_X_it6_310day: size: 4,000,000 X 1, how: left, fillna: 0, ft: it_ck_cvr_310day, desc: 该商品近3-10天的购买/点击转化率;
+df_X_it7_310day: size: 400,000 X 1, how: left, fillna: 0, ft: it_cl_cvr_310day, desc: 该商品近3-10天的购买/收藏转化率;
+df_X_it8_310day: size: 400,000 X 1, how: left, fillna: 0, ft: it_ct_cvr_310day, desc: 该商品近3-10天的购买/购物车转化率;
+df_X_it9_310day: size: 150,000 X 1, how: left, fillna: 0, ft: it_buy_pr_310day, desc: 该商品近3-10天在整个周期中的购买占比;
+df_X_it10_310day: size: 400,000 X 1, how: left, fillna: 0, ft: it_ck_pr_310day, desc: 该商品近3-10天在整个周期中的点击占比;
+df_X_it11_310day: size: 200,000 X 1, how: left, fillna: 0, ft: it_cl_pr_310day, desc: 该商品近3-10天在整个周期中的收藏占比;
+df_X_it12_310day: size: 400,000 X 1, how: left, fillna: 0, ft: it_ct_pr_310day, desc: 该商品近3-10天在整个周期中的购物车占比;
+
+#0-10 day
+df_X_it1_010day: size: 200,000 X 1, how: left, fillna: 0, ft: it_buy_dp_010day, desc: 该商品近0-10天内的重复购买率;
+df_X_it2_010day: size: 200,000 X 1, how: left, fillna: 0, ft: it_co_buy_pre_010day, desc: 该商品近0-10天的隔天购买率;
+
+#whole period
+df_X_it1: size: 50,000 X 1, how: left, fillna: np.timedelta64(0, 'D'), ft: it_buy_lasttime, desc: 该商品距离测量日最后一次购买的间隔天数;
+df_X_it2: size: 300,000 X 1, how: left, fillna: np.timedelta64(0, 'D'), ft: it_bh_lasttime, desc: 该商品距离测量日最后一次产生行为的间隔天数;
+
+##user X item(category) X time##
+index: user_id, item_category, time
+
+#today
+df_X_uct1_today: size: 20,000 X 1, how: left, fillna: 0, ft: uct_buy_today, desc: 该用户对该商品所属分类今天的购买量;
+df_X_uct2_today: size: 300,000 X 1, how: left, fillna: 0, ft: uct_click_today, desc: 该用户对该商品所属分类今天的点击量;
+df_X_uct3_today: size: 20,000 X 1, how: left, fillna: 0, ft: uct_collec_today, desc: 该用户对该商品所属分类今天的收藏量;
+df_X_uct4_today: size: 40,000 X 1, how: left, fillna: 0, ft: uct_cart_today, desc: 该用户对该商品所属分类今天的购物车量;
+
+#1 day
+df_X_uct1_1day: size: 20,000 X 1, how: left, fillna: 0, ft: uct_buy_1day, desc: 该用户对该商品所属分类近1天的购买量;
+df_X_uct2_1day: size: 300,000 X 1, how: left, fillna: 0, ft: uct_click_1day, desc: 该用户对该商品所属分类近1天的点击量;
+df_X_uct3_1day: size: 20,000 X 1, how: left, fillna: 0, ft: uct_collec_1day, desc: 该用户对该商品所属分类近1天的收藏量;
+df_X_uct4_1day: size: 40,000 X 1, how: left, fillna: 0, ft: uct_cart_1day, desc: 该用户对该商品所属分类近1天的购物车量;
+
+#2 day
+df_X_uct1_2day: size: 20,000 X 1, how: left, fillna: 0, ft: uct_buy_2day, desc: 该用户对该商品所属分类近2天的购买量;
+df_X_uct2_2day: size: 300,000 X 1, how: left, fillna: 0, ft: uct_click_2day, desc: 该用户对该商品所属分类近2天的点击量;
+df_X_uct3_2day: size: 20,000 X 1, how: left, fillna: 0, ft: uct_collec_2day, desc: 该用户对该商品所属分类近2天的收藏量;
+df_X_uct4_2day: size: 40,000 X 1, how: left, fillna: 0, ft: uct_cart_2day, desc: 该用户对该商品所属分类近2天的购物车量;
+
+#3-10 day
+df_X_uct1_310day: size: 150,000 X 1, how: left, fillna: 0, ft: uct_buy_310day, desc: 该用户对该商品所属分类近3-10天的购买量;
+df_X_uct2_310day: size: 2,000,000 X 1, how: left, fillna: 0, ft: uct_click_310day, desc: 该用户对该商品所属分类近3-10天的点击量;
+df_X_uct3_310day: size: 150,000 X 1, how: left, fillna: 0, ft: uct_collec_310day, desc: 该用户对该商品所属分类近3-10天的收藏量;
+df_X_uct4_310day: size: 250,000 X 1, how: left, fillna: 0, ft: uct_cart_310day, desc: 该用户对该商品所属分类近3-10天的购物车量;
+df_X_uct5_310day: size: 150,000 X 1, how: left, fillna: 0, ft: uct_bh_prc_310day, desc: 该用户对该商品所属分类近3-10天的购买在所有分类中的占比;
+df_X_uct6_310day: size: 2,000,000 X 1, how: left, fillna: 0, ft: uct_ck_prc_310day, desc: 该用户对该商品所属分类近3-10天的点击在所有分类中的占比;
+df_X_uct7_310day: size: 150,000 X 1, how: left, fillna: 0, ft: uct_cl_prc_310day, desc: 该用户对该商品所属分类近3-10天的收藏在所有分类中的占比;
+df_X_uct8_310day: size: 250,000 X 1, how: left, fillna: 0, ft: uct_ct_prc_310day, desc: 该用户对该商品所属分类近3-10天的购物车在所有分类中的占比;
+df_X_uct9_310day: size: 150,000 X 1, how: left, fillna: 0, ft: uct_buy_prt_310day, desc: 该用户对该商品所属分类近3-10天的购买在整个周期中占比;
+df_X_uct10_310day: size: 2,000,000 X 1, how: left, fillna: 0, ft: uct_ck_prt_310day, desc: 该用户对该商品所属分类近3-10天的点击在整个周期中占比;
+df_X_uct11_310day: size: 150,000 X 1, how: left, fillna: 0, ft: uct_cl_prt_310day, desc: 该用户对该用户该商品所属分类近3-10天的收藏在整个周期中占比;
+df_X_uct12_310day: size: 250,000 X 1, how: left, fillna: 0, ft: uct_ct_prt_310day, desc: 该用户对该商品所属分类近3-10天的购物车在整个周期中占比;
+
+#0-10day
+df_X_uct1_010day: size: 200,000 X 1, how: left, fillna: 0, ft: uct_co_buy_pre_010day, desc: 该用户对该商品所属分类近0-10天的隔天购买率;
+
+#whole period
+df_X_uct1: size: 20,000 X 1, how: left, fillna: np.timedelta64(0, 'D'), ft: uct_buy_lasttime, desc: 该用户对该商品所属分类距离测量日最后一次购买的间隔天数;
+df_X_uct2: size: 130,000 X 1, how: left, fillna: np.timedelta64(0, 'D'), ft: uct_bh_lasttime, desc: 该用户对该商品所属分类距离测量日最后一次产生行为的间隔天数;
+
+index: user_id, item_id, time
+
+#today
+df_X_uit1_today: size: 20,000 X 1, how: left, fillna: 0, ft: uit_buy_today, desc: 该用户对该商品今天的购买量;
+df_X_uit2_today: size: 900,000 X 1, how: left, fillna: 0, ft: uit_click_today, desc: 该用户对该商品今天的点击量;
+df_X_uit3_today: size: 30,000 X 1, how: left, fillna: 0, ft: uit_collec_today, desc: 该用户对该商品今天的收藏量;
+df_X_uit4_today: size: 50,000 X 1, how: left, fillna: 0, ft: uit_cart_today, desc: 该用户对该商品今天的购物车量;
+
+#1 day
+df_X_uit1_1day: size: 20,000 X 1, how: left, fillna: 0, ft: uit_buy_1day, desc: 该用户对该商品近1天的购买量;
+df_X_uit2_1day: size: 900,000 X 1, how: left, fillna: 0, ft: uit_click_1day, desc: 该用户对该商品近1天的点击量;
+df_X_uit3_1day: size: 30,000 X 1, how: left, fillna: 0, ft: uit_collec_1day, desc: 该用户对该商品近1天的收藏量;
+df_X_uit4_1day: size: 50,000 X 1, how: left, fillna: 0, ft: uit_cart_1day, desc: 该用户对该商品近1天的购物车量;
+
+#2 day
+df_X_uit1_2day: size: 20,000 X 1, how: left, fillna: 0, ft: uit_buy_2day, desc: 该用户对该商品近2天的购买量;
+df_X_uit2_2day: size: 900,000 X 1, how: left, fillna: 0, ft: uit_click_2day, desc: 该用户对该商品近2天的点击量;
+df_X_uit3_2day: size: 30,000 X 1, how: left, fillna: 0, ft: uit_collec_2day, desc: 该用户对该商品近2天的收藏量;
+df_X_uit4_2day: size: 50,000 X 1, how: left, fillna: 0, ft: uit_cart_2day, desc: 该用户对该商品近2天的购物车量;
+
+#3-10 day
+df_X_uit1_310day: size: 170,000 X 1, how: left, fillna: 0, ft: uit_buy_310day, desc: 该用户对该商品近3-10天的购买量;
+df_X_uit2_310day: size: 7,000,000 X 1, how: left, fillna: 0, ft: uit_click_310day, desc: 该用户对该商品近3-10天的点击量;
+df_X_uit3_310day: size: 300,000 X 1, how: left, fillna: 0, ft: uit_collec_310day, desc: 该用户对该商品近3-10天的收藏量;
+df_X_uit4_310day: size: 400,000 X 1, how: left, fillna: 0, ft: uit_cart_310day, desc: 该用户对该商品近3-10天的购物车量;
+df_X_uit5_310day: size: 170,000 X 1, how: left, fillna: 0, ft: uit_bh_prc_310day, desc: 该用户对该商品近3-10天的购买在所属分类中的占比;
+df_X_uit6_310day: size: 7,000,000 X 1, how: left, fillna: 0, ft: uit_ck_prc_310day, desc: 该用户对该商品近3-10天的点击在所属分类中的占比;
+df_X_uit7_310day: size: 300,000 X 1, how: left, fillna: 0, ft: uit_cl_prc_310day, desc: 该用户对该商品近3-10天的收藏在所属分类中的占比;
+df_X_uit8_310day: size: 400,000 X 1, how: left, fillna: 0, ft: uit_ct_prc_310day, desc: 该用户对该商品近3-10天的购物车在所属分类中的占比;
+
+#0-10day
+df_X_uit1_010day: size: 200,000 X 1, how: left, fillna: 0, ft: uit_co_buy_pre_010day, desc: 该用户对该商品近0-10天的隔天购买率;
+
+#whole period
+df_X_uit1: size: 20,000 X 1, how: left, fillna: np.timedelta64(0, 'D'), ft: uit_buy_lasttime, desc: 该用户对该商品距离测量日最后一次购买的间隔天数;
+df_X_uit2: size: 100,000 X 1, how: left, fillna: np.timedelta64(0, 'D'), ft: uit_bh_lasttime, desc: 该用户对该商品距离测量日最后一次产生行为的间隔天数;
+
+##y##
+df_y1: size: 20,000 X 1, how: left, fillna: 0, ft: buy_nextday, desc: 该用户对该商品是否在测量日后一天购买；
+df_y2: size: 20,000 X 1, how: left, fillna: 0, ft: buy_next2day, desc:该用户对该商品是否在测量日后两天购买；
+
+
+
