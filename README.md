@@ -13,6 +13,9 @@ Tianchi data mining competion-Taobao parchase prediction
 ### 2.tianchi_taobao_prediction_v1.0  天池数据挖掘比赛-淘宝用户购物预测部分v1.0
 ####     * Tianchi competition-Taobao purchase prediction1.py  购物预测模型训练及预测v1.0
 ####     * tianchi_mobile_recommendation_predict1.csv  预测结果v1.0
+### 3.tianchi_taobao_prediction_v2.0  天池数据挖掘比赛-淘宝用户购物预测部分v2.0
+####     * Feature instruction  新增特征构造说明文档
+####     * Feature construction.py  新增特征构造程序
 
 ## 详细说明
 ### 第一次模型训练及预测
@@ -31,5 +34,11 @@ Tianchi data mining competion-Taobao parchase prediction
 #### 模型2：svm+bagging(class_weight='balanced')
 #### f1_test: 0.067
 #### rank: 12/5410
+
+### 第二次模型训练及预测
+#### 优化理由：经过第一次模型预测后发现，由于特征量过少（4个），存在一定的欠拟合情况（训练集效果劣于cv、测试集），因此决定以增加特征的方式进行优化。
+#### 训练集: 300,000 X 280
+#### cv: 30,000 X 280
+#### 线上测试集: 30,000 X 280
 
 ### To be continued...
