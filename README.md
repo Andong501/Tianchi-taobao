@@ -45,6 +45,6 @@ Tianchi data mining competion-Taobao parchase prediction
 #### f1_train:0.078
 #### f1_cv:0.064
 #### f1_test:0.0703
-#### 27/5740
+#### rank: 27/5740
 
 ### To be continued...
