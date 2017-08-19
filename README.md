@@ -41,10 +41,10 @@ Tianchi data mining competion-Taobao parchase prediction
 #### cv: 28,000 X 273
 #### 线上测试集: 29,000 X 273
 
-### 模型1：svm+bagging(class_weight='balanced')
-### f1_train:7.8%
-### f1_cv:6.4%
-### f1_test:7.03%
-### 27/5740
+#### 模型1：svm+bagging(class_weight='balanced')
+#### f1_train:7.8%
+#### f1_cv:6.4%
+#### f1_test:7.03%
+#### 27/5740
 
 ### To be continued...
