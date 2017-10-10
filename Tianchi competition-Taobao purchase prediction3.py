@@ -1,4 +1,4 @@
-##Tianchi competition: Taobao purchase prediction version 4 medium
+##Tianchi competition: Taobao purchase prediction version 3
 
 import matplotlib as mlt
 import matplotlib.pyplot as plt
